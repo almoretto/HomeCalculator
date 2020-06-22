@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeConstructionsCalculator", "HomeConstructionsCalculator.csproj", "{036CEDF2-93BF-40A3-8DC2-E30DE72114B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstructionCalculator", "ConstructionCalculator.csproj", "{6F0D999D-E6FF-43B7-842D-0258B58B2C5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{036CEDF2-93BF-40A3-8DC2-E30DE72114B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{036CEDF2-93BF-40A3-8DC2-E30DE72114B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{036CEDF2-93BF-40A3-8DC2-E30DE72114B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{036CEDF2-93BF-40A3-8DC2-E30DE72114B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F0D999D-E6FF-43B7-842D-0258B58B2C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F0D999D-E6FF-43B7-842D-0258B58B2C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F0D999D-E6FF-43B7-842D-0258B58B2C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F0D999D-E6FF-43B7-842D-0258B58B2C5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1E66CF6C-3156-431A-9DD1-453E3E65AB89}
+		SolutionGuid = {203132FB-BF96-4800-BCB2-F96582530E6D}
 	EndGlobalSection
 EndGlobal
