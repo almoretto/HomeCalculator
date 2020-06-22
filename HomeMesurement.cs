@@ -17,6 +17,8 @@ namespace HomeConstructionCalculator
         public float Living { get; set; }
         public int Balcony { get; set; }
         public int Garage { get; set; }
+        public float Kitchen { get; set; }
+        public float Pool { get; set; }
 
         private const int CoupleRoom = 14;
         private const int SingleRoom = 9;
@@ -24,10 +26,19 @@ namespace HomeConstructionCalculator
         private const float SingleBath = 5f;
         private const int CoupleCloset = 6;
         private const int SingleCloset = 4;
-        private const float LivingOne=20.0f;
-        private const float LivingTwo=27.0f;
-        private const float LivingThree=38.5f;
-         
+        private const float LivingOne = 20.0f;
+        private const float LivingTwo = 27.0f;
+        private const float LivingThree = 38.5f;
+        private const int BalconyA = 20;
+        private const int BalconyB = 30;
+        private const int BalconyC = 44;
+        private const int Garage2 = 21;
+        private const int Garage3 = 46;
+        private const int Garage4 = 67;
+        private const float KitchenA = 10.5f;
+        private const float KitchenB = 14.0f;
+        private const float PoolA = 7.5f;
+        private const float PoolB = 14.0f;
 
 
         public float CalculateRooms(int n)
@@ -51,7 +62,7 @@ namespace HomeConstructionCalculator
         }
         public void CalculateOffice(char c)
         {
-            if (c=='S'||c=='s')
+            if (c == 'S' || c == 's')
             {
                 Office = 7.5f;
             }
@@ -60,9 +71,9 @@ namespace HomeConstructionCalculator
                 Office = 0.0f;
             }
         }
-         public void CalculateTheater(char c)
-         {
-            if (c=='S'||c=='s')
+        public void CalculateTheater(char c)
+        {
+            if (c == 'S' || c == 's')
             {
                 Office = 12;
             }
@@ -70,23 +81,83 @@ namespace HomeConstructionCalculator
             {
                 Office = 0;
             }
-         }
-        public float CalculateLiving(int n)
+        }
+        public void CalculateLiving(int n)
         {
             //Formula: =SE(C16=1;'01'!D29;SE(C16=2;'01'!D30;SE(C16=3;'01'!D31)))
-            if (n==1)
-	        {
-                Living=LivingOne;
-	        }
-            else if (n==2)
+            if (n == 1)
             {
-                Living=LivingTwo;
+                Living = LivingOne;
             }
-            else if (n==3)
-	        {
-                Living=LivingThree;
-	        }
-         
+            else if (n == 2)
+            {
+                Living = LivingTwo;
+            }
+            else if (n == 3)
+            {
+                Living = LivingThree;
+            }
+
+        }
+        public void CalculateBalcony(char c)
+        {
+            if (c == 'A' || c == 'a')
+            {
+                Balcony = BalconyA;
+            }
+            else if (c == 'B' || c == 'b')
+            {
+                Balcony = BalconyB;
+            }
+            else if (c == 'C' || c == 'c')
+            {
+                Balcony = BalconyC;
+            }
+        }
+        public void CalculateGarage(int n)
+        {
+            if (n == 2)
+            {
+                Garage = Garage2;
+            }
+            else if (n == 3)
+            {
+                Garage = Garage3;
+            }
+            else if (n == 4)
+            {
+                Garage = Garage4;
+            }
+        }
+        public void CalculateKitchen(char c)
+        {
+            if (c == 'A' || c == 'a')
+            {
+                Kitchen = KitchenA;
+            }
+            else if (c == 'B' || c == 'b')
+            {
+                Kitchen = KitchenB;
+            }
+        }
+        public void CalculatePool(char c)
+        {
+            if (c == 'n' || c == 'N')
+            {
+                Pool = 0.0f;
+            }
+            else if (c == 'a' || c == 'B')
+            {
+                Pool = PoolA;
+            }
+            else if (c == 'b' || c == 'B')
+            {
+                Pool = PoolB;
+            }
+        }
+        public float PartialArea()
+        {
+            return Rooms + Bath + Closet + Office + Theater + Living + Balcony + Garage + Kitchen + Pool;
         }
 
     }
