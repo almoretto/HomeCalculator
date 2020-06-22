@@ -19,6 +19,12 @@ namespace HomeConstructionCalculator
         public int Garage { get; set; }
         public float Kitchen { get; set; }
         public float Pool { get; set; }
+        public float PartialArea { get; set; }
+        public float ComplementaryArea { get; set; }
+        public float TotalArea { get; set; }
+        public float TerrainPrice { get; set; }
+        public float ConstructionPrice { get; set; }
+        public float TotalPrice { get; set; }
 
         private const int CoupleRoom = 14;
         private const int SingleRoom = 9;
@@ -39,6 +45,15 @@ namespace HomeConstructionCalculator
         private const float KitchenB = 14.0f;
         private const float PoolA = 7.5f;
         private const float PoolB = 14.0f;
+        private const float ComplArea210 = 51.1f;
+        private const float ComplArea135 = 14.75f;
+        private const float ComplArea135210 = 30.2f;
+        private const float Terrain135 = 120000.00f;
+        private const float Terrain135210 = 160000.00f;
+        private const float Terrain210 = 220000.00f;
+        private const float ConstructionPrice135 = 2300.00f;
+        private const float ConstructionPrice135210 = 2800.00f;
+        private const float ConstructionPreice210 = 3500.00f;
 
 
         public float CalculateRooms(int n)
@@ -155,10 +170,75 @@ namespace HomeConstructionCalculator
                 Pool = PoolB;
             }
         }
-        public float PartialArea()
+        public void SumPartialArea()
         {
-            return Rooms + Bath + Closet + Office + Theater + Living + Balcony + Garage + Kitchen + Pool;
+            PartialArea = Rooms
+                + Bath
+                + Closet
+                + Office
+                + Theater
+                + Living
+                + Balcony
+                + Garage
+                + Kitchen
+                + Pool;
         }
+        public void CalculateComplementaryArea()
+        {
+            //=SE(C26>'01'!E62;'01'!F62;SE(Site!C26<'01'!C60;'01'!F60;SE(E(C26<='01'!C61;Site!C26>='01'!E61);'01'!F61)))
+            //If PartialArea>210 Then 
 
+            if (PartialArea > 210.0)
+            {
+                ComplementaryArea = ComplArea210;
+            }
+            else if (PartialArea < 135.0)
+            {
+                ComplementaryArea = ComplArea135;
+            }
+            else if (PartialArea >= 135 && PartialArea <= 210)
+            {
+                ComplementaryArea = ComplArea135210;
+            }
+
+        }
+        public void CalculateTotalArea()
+        {
+            TotalArea = PartialArea + ComplementaryArea;
+        }
+        public void CalculateTerrainPrice()
+        {
+            if (TotalArea > 210)
+            {
+                TerrainPrice = Terrain210;
+            }
+            else if (TotalArea < 135)
+            {
+                TerrainPrice = Terrain135;
+            }
+            else if (TotalArea >= 135 && TotalArea <= 210)
+            {
+                TerrainPrice = Terrain135210;
+            }
+        }
+        public void CalculateConstructionPrice()
+        {
+            if (TotalArea > 210)
+            {
+                ConstructionPrice = ConstructionPreice210 * TotalArea;
+            }
+            else if (TotalArea < 135)
+            {
+                ConstructionPrice = ConstructionPrice135 * TotalArea;
+            }
+            else if (TotalArea >= 135 && TotalArea <= 210)
+            {
+                ConstructionPrice = ConstructionPrice135210 * TotalArea;
+            }
+        }
+        public void CalculateTotalPrice()
+        {
+            TotalPrice = TerrainPrice + ConstructionPrice;
+        }
     }
 }
