@@ -14,7 +14,7 @@ namespace HomeConstructionCalculator
         public int Closet { get; set; }
         public float Office { get; set; }
         public int Theater { get; set; }
-        public int Living { get; set; }
+        public float Living { get; set; }
         public int Balcony { get; set; }
         public int Garage { get; set; }
 
@@ -24,6 +24,10 @@ namespace HomeConstructionCalculator
         private const float SingleBath = 5f;
         private const int CoupleCloset = 6;
         private const int SingleCloset = 4;
+        private const float LivingOne=20.0f;
+        private const float LivingTwo=27.0f;
+        private const float LivingThree=38.5f;
+         
 
 
         public float CalculateRooms(int n)
@@ -55,6 +59,34 @@ namespace HomeConstructionCalculator
             {
                 Office = 0.0f;
             }
+        }
+         public void CalculateTheater(char c)
+         {
+            if (c=='S'||c=='s')
+            {
+                Office = 12;
+            }
+            else
+            {
+                Office = 0;
+            }
+         }
+        public float CalculateLiving(int n)
+        {
+            //Formula: =SE(C16=1;'01'!D29;SE(C16=2;'01'!D30;SE(C16=3;'01'!D31)))
+            if (n==1)
+	        {
+                Living=LivingOne;
+	        }
+            else if (n==2)
+            {
+                Living=LivingTwo;
+            }
+            else if (n==3)
+	        {
+                Living=LivingThree;
+	        }
+         
         }
 
     }
