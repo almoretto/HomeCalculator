@@ -1,0 +1,234 @@
+﻿@model CalculatorViewModel
+
+@{
+    ViewData["Title"] = "Construction Calculator";
+}
+
+@section Styles {
+    @{await Html.RenderPartialAsync("_FormComponentStylesPartial"); }
+    @{await Html.RenderPartialAsync("_ValidationStylesPartial"); }
+}
+
+<style>
+    div.blueTable {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        border: 0px solid #1C6EA4;
+        background-color: #2B689E;
+        width: 30%;
+        height: 350px;
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+    .divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
+        border: 0px solid #AAAAAA;
+        padding: 10px 5px;
+    }
+
+    .divTable.blueTable .divTableBody .divTableCell {
+        font-size: 13px;
+        font-weight: bold;
+        color: #FFFFFF;
+    }
+
+    .divTable.blueTable .divTableCell:nth-child(even) {
+        background: #99A7B4;
+    }
+
+    .blueTable .tableFootStyle {
+        font-size: 14px;
+    }
+
+        .blueTable .tableFootStyle .links {
+            text-align: right;
+        }
+
+            .blueTable .tableFootStyle .links a {
+                display: inline-block;
+                background: #1C6EA4;
+                color: #FFFFFF;
+                padding: 2px 8px;
+                border-radius: 5px;
+            }
+
+    .blueTable.outerTableFooter {
+        border-top: none;
+    }
+
+        .blueTable.outerTableFooter .tableFootStyle {
+            padding: 3px 5px;
+        }
+    /* DivTable.com */
+    .divTable {
+        display: table;
+    }
+
+    .divTableRow {
+        display: table-row;
+    }
+
+    .divTableHeading {
+        display: table-header-group;
+    }
+
+    .divTableCell, .divTableHead {
+        display: table-cell;
+    }
+
+    .divTableHeading {
+        display: table-header-group;
+    }
+
+    .divTableFoot {
+        display: table-footer-group;
+    }
+
+    .divTableBody {
+        display: table-row-group;
+    }
+</style>
+
+<form id="calculatorForm" asp-controller="Home" asp-action="Calculator"
+      autocomplete="off"
+      data-ajax="true"
+      data-ajax-method="POST"
+      data-ajax-failure="onGlobalFailed"
+      data-ajax-success="onCalcSuccess"
+      asp-anti-forgery">
+    <div class="divTable blueTable">
+        <div class="divTableBody">
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <label for="rooms">Quantos quartos? (3 ou 4 quartos ):</label>
+                </div>
+                <div class="divTableCell">
+                    <select asp-for="RoomsQte">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <label for="bath">Quantos banheiros ? ( de 2 à 6 ):</label>
+                </div>
+                <div class="divTableCell">
+                    <select asp-for="BathQte">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <label for="closets">Quantos closets? ( de 1 a 4 ):</label>
+                </div>
+                <div class="divTableCell">
+                    <select asp-for="ClosetsQte">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <label for="office">Terá escritorio? (S ou N ):</label>
+                </div>
+                <div class="divTableCell">
+                    <select asp-for="OfficeEx">
+                        <option value="S">Sim</option>
+                        <option value="N">Não</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <label for="theater">Terá home theater? (S ou N ):</label>
+                </div>
+                <div class="divTableCell">
+                    <select asp-for="TheaterEx">
+                        <option value="S">Sim</option>
+                        <option value="N">Não</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <label for="living">Tipo de sala / living? ( 1 , 2 ou 3 ):</label>
+                </div>
+                <div class="divTableCell">
+                    <select asp-for="LivinGtp">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <label for="balcony">Tipo de varanda / area gourmet? ( A , B ou C ):</label>
+                </div>
+                <div class="divTableCell">
+                    <select asp-for="BalconyTp">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <label for="garage">Tipo garagem ( 2, 3 ou 4 carros ):</label>
+                </div>
+                <div class="divTableCell">
+                    <select asp-for="GarageQte">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <label for="kitchen">Tipo de cozinha ( A ou B ):</label>
+                </div>
+                <div class="divTableCell">
+                    <select asp-for="KitchenTp">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <label for="pool">Terá Piscina (Não ou modelo  A ou B ):</label>
+                </div>
+                <div class="divTableCell">
+                    <select asp-for="PoolTp">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="N">Não</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell"></div>
+                <div class="divTableCell">
+                    <input type="submit" value="Calcular">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    @{await Html.RenderPartialAsync("_FormComponentScriptPartial"); }
+
+    <script src="js/calculator.js"></script>
+}
