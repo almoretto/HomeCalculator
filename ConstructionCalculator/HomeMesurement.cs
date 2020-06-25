@@ -9,14 +9,15 @@ namespace ConstructionCalculator
 {
     class HomeMessurement
     {
-        public int Rooms { get; set; }
-        public int Bath { get; set; }
-        public int Closet { get; set; }
+        /*Properties Area*/
+        public float Rooms { get; set; }
+        public float Bath { get; set; }
+        public float Closet { get; set; }
         public float Office { get; set; }
-        public int Theater { get; set; }
+        public float Theater { get; set; }
         public float Living { get; set; }
-        public int Balcony { get; set; }
-        public int Garage { get; set; }
+        public float Balcony { get; set; }
+        public float Garage { get; set; }
         public float Kitchen { get; set; }
         public float Pool { get; set; }
         public float PartialArea { get; set; }
@@ -26,58 +27,71 @@ namespace ConstructionCalculator
         public float ConstructionPrice { get; set; }
         public float TotalPrice { get; set; }
 
-       const int CoupleRoom = 14;
-       const int SingleRoom = 9;
-       const float CoupleBath = 7.5f;
-       const float SingleBath = 5f;
-       const int CoupleCloset = 6;
-       const int SingleCloset = 4;
-       const float LivingOne = 20.0f;
-       const float LivingTwo = 27.0f;
-       const float LivingThree = 38.5f;
-       const int BalconyA = 20;
-       const int BalconyB = 30;
-       const int BalconyC = 44;
-       const int Garage2 = 21;
-       const int Garage3 = 46;
-       const int Garage4 = 67;
-       const float KitchenA = 10.5f;
-       const float KitchenB = 14.0f;
-       const float PoolA = 7.5f;
-       const float PoolB = 14.0f;
-       const float ComplArea210 = 51.1f;
-       const float ComplArea135 = 14.75f;
-       const float ComplArea135210 = 30.2f;
-       const float Terrain135 = 120000.00f;
-       const float Terrain135210 = 160000.00f;
-       const float Terrain210 = 220000.00f;
-       const float ConstructionPrice135 = 2300.00f;
-       const float ConstructionPrice135210 = 2800.00f;
-       const float ConstructionPreice210 = 3500.00f;
+        /*Properties Form*/
+        public int RoomsQte { get; set; }
+        public int BathQte { get; set; }
+        public int ClosetQte { get; set; }
+        public string OfficeEx { get; set; }
+        public string TheaterEx { get; set; }
+        public int LivingTp { get; set; }
+        public string BalconyTp { get; set; }
+        public int GarageQte { get; set; }
+        public string KitchenTp { get; set; }
+        public string PoolTp { get; set; }
+        
+        /*Constants*/
+        const int CoupleRoom = 14;
+        const int SingleRoom = 9;
+        const float CoupleBath = 7.5f;
+        const float SingleBath = 5f;
+        const int CoupleCloset = 6;
+        const int SingleCloset = 4;
+        const float LivingOne = 20.0f;
+        const float LivingTwo = 27.0f;
+        const float LivingThree = 38.5f;
+        const int BalconyA = 20;
+        const int BalconyB = 30;
+        const int BalconyC = 44;
+        const int Garage2 = 21;
+        const int Garage3 = 46;
+        const int Garage4 = 67;
+        const float KitchenA = 10.5f;
+        const float KitchenB = 14.0f;
+        const float PoolA = 7.5f;
+        const float PoolB = 14.0f;
+        const float ComplArea210 = 51.1f;
+        const float ComplArea135 = 14.75f;
+        const float ComplArea135210 = 30.2f;
+        const float Terrain135 = 120000.00f;
+        const float Terrain135210 = 160000.00f;
+        const float Terrain210 = 220000.00f;
+        const float ConstructionPrice135 = 2300.00f;
+        const float ConstructionPrice135210 = 2800.00f;
+        const float ConstructionPreice210 = 3500.00f;
 
 
-        public float CalculateRooms(int n)
+        public void CalculateRooms()
         {
             //Formula: ='01'!D11+((C6-1)*'01'!D12)
             //casal         14  m2 
             //solteiro       9   m2
-            return (CoupleRoom + ((n - 1) * SingleRoom));
+            Rooms = (CoupleRoom + ((RoomsQte - 1) * SingleRoom));
         }
-        public float CalculateBath(int n)
+        public void CalculateBath()
         {
             //Formula: ='01'!D15+((C8-1)*'01'!D16)
             //Casal     7,5
             //solteiro    5
-            return (CoupleBath + ((n - 1) * SingleBath));
+            Bath = (CoupleBath + ((BathQte - 1) * SingleBath));
         }
-        public float CalculateCloset(int n)
+        public void CalculateCloset()
         {
             //Formula: ='01'!D19+((C10-1)*'01'!D20)
-            return (CoupleCloset + ((n - 1) * SingleCloset));
+            Closet = (CoupleCloset + ((ClosetQte - 1) * SingleCloset));
         }
-        public void CalculateOffice(char c)
+        public void CalculateOffice()
         {
-            if (c == 'S' || c == 's')
+            if (OfficeEx == "S" || OfficeEx == "s")
             {
                 Office = 7.5f;
             }
@@ -86,86 +100,86 @@ namespace ConstructionCalculator
                 Office = 0.0f;
             }
         }
-        public void CalculateTheater(char c)
+        public void CalculateTheater()
         {
-            if (c == 'S' || c == 's')
+            if (TheaterEx == "S" || TheaterEx == "s")
             {
-                Office = 12;
+                Theater = 12;
             }
             else
             {
-                Office = 0;
+                Theater = 0;
             }
         }
-        public void CalculateLiving(int n)
+        public void CalculateLiving()
         {
             //Formula: =SE(C16=1;'01'!D29;SE(C16=2;'01'!D30;SE(C16=3;'01'!D31)))
-            if (n == 1)
+            if (LivingTp == 1)
             {
                 Living = LivingOne;
             }
-            else if (n == 2)
+            else if (LivingTp == 2)
             {
                 Living = LivingTwo;
             }
-            else if (n == 3)
+            else if (LivingTp == 3)
             {
                 Living = LivingThree;
             }
 
         }
-        public void CalculateBalcony(char c)
+        public void CalculateBalcony()
         {
-            if (c == 'A' || c == 'a')
+            if (BalconyTp == "A" || BalconyTp == "a")
             {
                 Balcony = BalconyA;
             }
-            else if (c == 'B' || c == 'b')
+            else if (BalconyTp == "B" || BalconyTp == "b")
             {
                 Balcony = BalconyB;
             }
-            else if (c == 'C' || c == 'c')
+            else if (BalconyTp == "C" || BalconyTp == "c")
             {
                 Balcony = BalconyC;
             }
         }
-        public void CalculateGarage(int n)
+        public void CalculateGarage()
         {
-            if (n == 2)
+            if (GarageQte == 2)
             {
                 Garage = Garage2;
             }
-            else if (n == 3)
+            else if (GarageQte == 3)
             {
                 Garage = Garage3;
             }
-            else if (n == 4)
+            else if (GarageQte == 4)
             {
                 Garage = Garage4;
             }
         }
-        public void CalculateKitchen(char c)
+        public void CalculateKitchen()
         {
-            if (c == 'A' || c == 'a')
+            if (KitchenTp == "A" || KitchenTp == "a")
             {
                 Kitchen = KitchenA;
             }
-            else if (c == 'B' || c == 'b')
+            else if (KitchenTp == "B" || KitchenTp == "b")
             {
                 Kitchen = KitchenB;
             }
         }
-        public void CalculatePool(char c)
+        public void CalculatePool()
         {
-            if (c == 'n' || c == 'N')
+            if (PoolTp == "n" || PoolTp == "N")
             {
                 Pool = 0.0f;
             }
-            else if (c == 'a' || c == 'B')
+            else if (PoolTp == "a" || PoolTp == "B")
             {
                 Pool = PoolA;
             }
-            else if (c == 'b' || c == 'B')
+            else if (PoolTp == "b" || PoolTp == "B")
             {
                 Pool = PoolB;
             }
