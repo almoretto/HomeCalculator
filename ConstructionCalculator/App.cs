@@ -74,7 +74,7 @@ namespace ConstructionCalculator
 
 
 
-        /*
+        /* Não gerou interface com usuário
         HomeMessurement home = new HomeMessurement();
         var div = new HTMLDivElement();
 
