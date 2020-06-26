@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -35,10 +36,39 @@ namespace ConstructionCalculator.Web.Controllers
             };
 
             objMessurementService.CalculateRooms();
+            objMessurementService.CalculateRooms();
+            objMessurementService.CalculateBath();
+            objMessurementService.CalculateCloset();
+            objMessurementService.CalculateOffice();
+            objMessurementService.CalculateTheater();
+            objMessurementService.CalculateLiving();
+            objMessurementService.CalculateBalcony();
+            objMessurementService.CalculateGarage();
+            objMessurementService.CalculateKitchen();
+            objMessurementService.CalculatePool();
+            objMessurementService.SumPartialArea();
+            objMessurementService.CalculateComplementaryArea();
+            objMessurementService.CalculateTotalArea();
+            objMessurementService.CalculateTerrainPrice();
+            objMessurementService.CalculateConstructionPrice();
+            objMessurementService.CalculateTotalPrice();
+            var terrainPrice= string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", objMessurementService.TerrainPrice);
+            var contructionPrice = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", objMessurementService.ConstructionPrice);
+            var totalPrice = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", objMessurementService.TotalPrice);
 
-            var resultadoCalculo = 200; //Exemplo de resultado
+            var resultadoCalculo = "Area Total: "
+                + objMessurementService.TotalArea.ToString("F2")
+                + " m² \n"
+                + "Preço do Terreno: "
+                + terrainPrice
+                + "\n"
+                + "Preço da Construção: "
+                + contructionPrice
+                + "\n"
+                + "Preço Total: "
+                + totalPrice;//Exemplo de resultado
 
-            return new JsonResult(new 
+            return new JsonResult(new
             {
                 resultadoCalculo
             });
