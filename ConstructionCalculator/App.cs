@@ -12,27 +12,7 @@ namespace ConstructionCalculator
     {
         public static void Main()
         {
-            System.Console.WriteLine("Preencha Abaixo");
-            System.Console.WriteLine("Quantos quartos ? (3 ou 4 quartos): ");
-            var rooms = int.Parse(System.Console.ReadLine());
-            System.Console.WriteLine("Quantos banheiros ? ( de 2 à 6 ): ");
-            var bath = int.Parse(System.Console.ReadLine());
-            System.Console.WriteLine("Quantos closets? ( de 1 a 4 ): ");
-            var closet = int.Parse(System.Console.ReadLine());
-            System.Console.WriteLine("Terá escritorio? (S ou N ): ");
-            var office = System.Console.ReadLine();
-            System.Console.WriteLine("Terá home theater? (S ou N ): ");
-            var theater = System.Console.ReadLine();
-            System.Console.WriteLine("Tipo de sala / living? ( 1 , 2 ou 3 ): ");
-            var living = int.Parse(System.Console.ReadLine());
-            System.Console.WriteLine("Tipo de varanda / area gourmet? ( A , B ou C ): ");
-            var balcony = System.Console.ReadLine();
-            System.Console.WriteLine("Tipo garagem ( 2, 3 ou 4 carros ): ");
-            var garage = int.Parse(System.Console.ReadLine());
-            System.Console.WriteLine("Tipo de cozinha ( A ou B ): ");
-            var kitchen = System.Console.ReadLine();
-            System.Console.WriteLine("Terá Piscina (N ou modelo  A ou B ): ");
-            var pool = System.Console.ReadLine();
+            
 
             HomeMessurement home = new HomeMessurement();
             home.RoomsQte = rooms;
